@@ -1,13 +1,10 @@
- 
 package dsassignment;
 
- 
 public class LLStack<E> {
 
-    static class Node<E> {
-
-        private E element; // reference to the element stored at this node
-        private Node<E> next; // reference to the subsequent node in the list
+    private static class Node<E> {
+        private E element;
+        private Node<E> next;
 
         public Node(E e, Node<E> n) {
             element = e;
@@ -25,37 +22,34 @@ public class LLStack<E> {
         public void setNext(Node<E> n) {
             next = n;
         }
-
-        public void setelement(E element) {
-            this.element = element;
-        }
     }
-    private Node<E> top;   // reference to the head node 
-    private int size;   // number of elements in the LLstack 
 
-    public LLStack() {   // constructs an empty LLstack
+    private Node<E> top;
+    private int size;
+
+    public LLStack() {
         top = null;
         size = 0;
     }
 
-    public int size() {
+    public int getSize() {
         return size;
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return top == null;
     }
 
-    public E top() {
+    public E peek() {
         if (isEmpty()) {
             return null;
         }
         return top.getElement();
     }
 
-    public void push(E elem) {
-        Node<E> v = new Node<E>(elem, top);   // create and link-in a new node 
-        top = v;
+    public void push(E element) {
+        Node<E> newNode = new Node<>(element, top);
+        top = newNode;
         size++;
     }
 
@@ -63,25 +57,24 @@ public class LLStack<E> {
         if (isEmpty()) {
             return null;
         }
-        E temp = top.getElement();
-        top = top.getNext();   // link-out the former top node 
+        E element = top.getElement();
+        top = top.getNext();
         size--;
-        return temp;
+        return element;
     }
 
     public void print() {
-        LLStack<E> temp = new LLStack<>();
+        LLStack<E> tempStack = new LLStack<>();
 
         System.out.println("Top");
         while (!isEmpty()) {
-            E ele = pop();
-            System.out.println(ele);
-            temp.push(ele);
+            E element = pop();
+            System.out.println(element);
+            tempStack.push(element);
         }
-        while (!temp.isEmpty()) {
-            push(temp.pop());
+        while (!tempStack.isEmpty()) {
+            push(tempStack.pop());
         }
         System.out.println("Bottom");
     }
-
 }
