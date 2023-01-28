@@ -5,6 +5,15 @@ public class PatientInfo {
     private String patientName;
     private int patientID;
 
+    public PatientInfo(int patientId2, String patientName2) {
+        this.patientID = patientId2;
+        this.patientName = patientName2;
+    }
+
+    public PatientInfo() {
+        
+    }
+
     public String getPatientName() {
         return patientName;
     }
