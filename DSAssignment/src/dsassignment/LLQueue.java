@@ -1,11 +1,9 @@
 package dsassignment;
 
 public class LLQueue<E> {
-
-    static class Node<E> {
-
-        private E element; // reference to the element stored at this node
-        private Node<E> next; // reference to the subsequent node in the list
+    private static class Node<E> {
+        private E element;
+        private Node<E> next;
 
         public Node(E e, Node<E> n) {
             element = e;
@@ -23,16 +21,13 @@ public class LLQueue<E> {
         public void setNext(Node<E> n) {
             next = n;
         }
-
-        public void setelement(E element) {
-            this.element = element;
-        }
     }
-    protected Node<E> front;
-    protected Node<E> rear;
-    protected int size;
 
-    public LLQueue() { // constructor
+    private Node<E> front;
+    private Node<E> rear;
+    private int size;
+
+    public LLQueue() {
         front = null;
         rear = null;
         size = 0;
@@ -46,14 +41,14 @@ public class LLQueue<E> {
         return size == 0;
     }
 
-    public E first() { // returns (but does not remove) the first element
+    public E first() {
         if (isEmpty()) {
             return null;
         }
         return front.getElement();
     }
 
-    public E last() { // returns (but does not remove) the last element
+    public E last() {
         if (isEmpty()) {
             return null;
         }
@@ -63,11 +58,11 @@ public class LLQueue<E> {
     public void enqueue(E elem) {
         Node<E> newest = new Node<E>(elem, null);
         if (isEmpty()) {
-            front = newest; // special case of a previously empty queue
+            front = newest;
         } else {
-            rear.setNext(newest); // add node at the tail of the list
+            rear.setNext(newest);
         }
-        rear = newest; // update the reference to the tail node
+        rear = newest;
         size++;
     }
 
@@ -79,21 +74,22 @@ public class LLQueue<E> {
         front = front.getNext();
         size--;
         if (size == 0) {
-            rear = null; // the queue is now empty
+            rear = null;
         }
         return answer;
     }
 
-    //display method
     public void print() {
-        int sz = size();
+        if(isEmpty()){
+            System.out.println("Queue is empty");
+            return;
+        }
         System.out.println("Front");
-        for (int i = 0; i < sz; i++) {
-            E ele = dequeue();
-            System.out.println(ele);
-            enqueue(ele);
+        Node<E> current = front;
+        while (current != null) {
+            System.out.println(current.getElement());
+            current = current.getNext();
         }
         System.out.println("End");
     }
-
 }
