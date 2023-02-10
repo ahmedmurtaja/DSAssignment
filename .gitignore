@@ -1,0 +1,13 @@
+# ignore build files
+build/
+dist/
+*.egg-info
+*.egg
+*.pyc
+*.pyo
+# IGNORE .CLASS FILES
+*.class
+# IGNORE .DS_STORE
+.DS_Store
+# IGNORE .DS_STORE
+.DS_Store

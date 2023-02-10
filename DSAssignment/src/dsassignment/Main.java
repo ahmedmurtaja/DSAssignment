@@ -69,6 +69,12 @@ public class Main {
         SinglyLinkedList<PatientInfo> firstList = readPatients();
         SinglyLinkedList<PatientInfo> secondList = readPatients();
         SinglyLinkedList<PatientInfo> mergedList = new SinglyLinkedList<>();
+        System.out.println("-------Lists Before Merging-------");
+        System.out.println("The First Given Linked List:");
+        firstList.print();
+        System.out.println("The Second Given Linked List:");
+        secondList.print();
+        
         while (!firstList.isEmpty() || !secondList.isEmpty()) {
             if (!firstList.isEmpty()) {
                 PatientInfo patient = firstList.removeFirst();
@@ -79,13 +85,9 @@ public class Main {
                 mergedList.addLast(patient);
             }
         }
-        System.out.println("-------Lists Before Merging-------");
-        System.out.println("The First Given Linked List:");
-        firstList.print();
-        System.out.println("The Second Given Linked List:");
-        secondList.print();
         System.out.println("-------List After Merging-------");
         mergedList.print();
+       
         return mergedList;
     }
     
@@ -132,6 +134,15 @@ public class Main {
             PatientInfo patient = getPatientInfo();
             secondStack.push(patient);
         }
+         // print
+         System.out.println("-------Stacks Before Merging-------");
+
+         System.out.println("The First given Stack:");
+         firstStack.print();
+ 
+         System.out.println("The Second given Stack:");
+         secondStack.print();
+ 
 
         // merge
         LLStack<PatientInfo> mergedStack = new LLStack<>();
@@ -143,15 +154,7 @@ public class Main {
             PatientInfo patient = secondStack.pop();
             mergedStack.push(patient);
         }
-        // print
-        System.out.println("-------Stacks Before Merging-------");
-
-        System.out.println("The First given Stack:");
-        firstStack.print();
-
-        System.out.println("The Second given Stack:");
-        secondStack.print();
-
+       
         System.out.println("-------Stack After Merging-------");
         mergedStack.print();
 }
@@ -209,6 +212,13 @@ private static PatientInfo getPatientInfo() {
     
             secondQueue.enqueue(patient);
         }
+        System.out.println("-------Queues Before Merging-------");
+    
+        System.out.println("The First given Queue:");
+        firstQueue.print();
+    
+        System.out.println("The Second given Queue:");
+        secondQueue.print();
     
         // merge
         LLQueue<PatientInfo> mergedQueue = new LLQueue<>();
@@ -225,13 +235,7 @@ private static PatientInfo getPatientInfo() {
             mergedQueue.enqueue(patient);
         }
     
-        System.out.println("-------Queues Before Merging-------");
-    
-        System.out.println("The First given Queue:");
-        firstQueue.print();
-    
-        System.out.println("The Second given Queue:");
-        secondQueue.print();
+
     
         System.out.println("-------Queue After Merging-------");
         mergedQueue.print();
@@ -244,7 +248,12 @@ private static PatientInfo getPatientInfo() {
         SinglyLinkedList<PatientInfo> list = readPatientsFromUser("linked list", input);
         LLStack<PatientInfo> stack = readPatientsFromStack("stack", input);
         SinglyLinkedList<PatientInfo> mergedList = new SinglyLinkedList<>();
-    
+        
+        System.out.println("-------List and Stack Before Merging-------");
+        System.out.println("The Given Linked List:");
+        list.print();
+        System.out.println("The Given Stack:");
+        stack.print();
         // copy list
         for (int i = 0; i < list.size(); i++) {
             PatientInfo patient = list.removeFirst();
@@ -259,17 +268,14 @@ private static PatientInfo getPatientInfo() {
             PatientInfo patient = stack.pop();
             temp.push(patient);
         }
+        
         while (!temp.isEmpty()) {
             PatientInfo patient = temp.pop();
             mergedList.addLast(patient);
             stack.push(patient);
         }
         // print
-        System.out.println("-------List and Stack Before Merging-------");
-        System.out.println("The Given Linked List:");
-        list.print();
-        System.out.println("The Given Stack:");
-        stack.print();
+       
         System.out.println("-------List After Merging-------");
         mergedList.print();
     }
@@ -352,7 +358,13 @@ private static PatientInfo getPatientInfo() {
             PatientInfo patient = new PatientInfo(patientId, patientName);
             queue.enqueue(patient);
         }
+  // print
+  System.out.println("-------List and Queue Before Merging-------");
+  System.out.println("The Given Linked List:");
+  list.print();
 
+  System.out.println("The Given Queue:");
+  queue.print();
         // merge List
         SinglyLinkedList<PatientInfo> mergedList = new SinglyLinkedList<>();
         // copy list
@@ -367,13 +379,7 @@ private static PatientInfo getPatientInfo() {
             queue.enqueue(patient);
             mergedList.addLast(patient);
         }
-        // print
-        System.out.println("-------List and Queue Before Merging-------");
-        System.out.println("The Given Linked List:");
-        list.print();
-
-        System.out.println("The Given Queue:");
-        queue.print();
+      
 
         System.out.println("-------List After Merging-------");
         mergedList.print();
@@ -422,6 +428,12 @@ private static PatientInfo getPatientInfo() {
             // add to stack
             stack.push(patient);
         }
+        System.out.println("-------List and Stack Before Merging-------");
+        System.out.println("The Given Linked List:");
+        list.print();
+    
+        System.out.println("The Given Stack:");
+        stack.print();
     
         // merge
         LLQueue<PatientInfo> mergedQueue = new LLQueue<>();
@@ -445,12 +457,7 @@ private static PatientInfo getPatientInfo() {
         }
     
         // print
-        System.out.println("-------List and Stack Before Merging-------");
-        System.out.println("The Given Linked List:");
-        list.print();
-    
-        System.out.println("The Given Stack:");
-        stack.print();
+       
     
         System.out.println("-------Queue After Merging Patients Start with Letter S-------");
         mergedQueue.print();
